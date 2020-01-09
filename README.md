@@ -1,39 +1,11 @@
-## The Simplest Bitcoin Wallet
+# IEWW: ILCoin Easy Web Wallet
 
-Online Bitcoin wallets often have one or two annoying idiosyncrasies, like demanding mandatory 2-FA, and there's nothing you can do about it.
+Simple things tend to be popular because people have to spend less time and mental effort. Here we make cryptocurrency things more simple than it usually be. We present a simple solution, IEWW: ILCoin Easy Web Wallet. 
 
-It's also not clear what information they collect. Besides, sometimes you just need a simple wallet.
+It generates addresses based on the passphrase or private key you enter. So, you can access your available wallet from web, then you can send your ILCoin. This also works well when you want to redeem your coins with a known private key from your paper/physical wallet without install a local wallet (QT wallet). Also you dont need to play with annoying things like 2FA or pin code. No data is stored on server. The whole point of deriving keys and signing the TX in JS is so the keys never leave your browser. Nothing is sent to server, everything is done in the browser. It gets utxo and send signed txs via ILCoin block explorer api. **Always remember that it is your responsibility to adopt good practices in order to protect your money.**
 
-So I made The Simplest Bitcoin Wallet :)
+# **How does IEWW works?**
 
-https://tsbw.io/
-
-Mostly for myself, but maybe somebody will find it useful too. Main discussion is [here](https://simtalk.org:444/index.php?topic=174).
-
-Please help test it, if you have a spare minute.
-
-If you like it, send some love here: 19BryCNdGs5F48J6yvw41pVSd5RDiA4j1x.
-
-----
-
-The code is based on [coinb.in](https://github.com/OutCast3k/coinbin): I removed 3/4 of it, fixed a few bugs and rewrote the rest. It is now easier to read and verify.
-
-It's also a good start if you are interested to learn about Bitcoin and JS wallets since it's a lot simpler than the original.
-
-Usage example:
-```
-var tx = btc.new_tx();
-
-tx.add_input ('01020304abcdef', 0, '76a9141d8f0476ea05d9459e004fd0ff10588dd3979e6788ac'); // txid, no, script
-tx.add_output('13nwZVh9RsKuZGegVn5KWHM51dA98Mho5f', 1234); // address, amount
-
-var keys = btc.get_keys('123'); // 123 = passphrase
-
-var signed = tx.sign(keys); console.log(signed);
-```
-
-Nothing is sent to my server, everything is done in the browser. It gets utxo and sends signed txs via external API's.
-
-All API access is wrapped in a "backend" object, which can be easily swapped. I wrote two: for blochchain.info and blockexplorer.com.
-
-You can enter a compressed or uncompressed WIF key as your passphrase; this means you can use the same wallets you have at https://coinb.in or any other wallet that allows exporting in this format.
+**1.** You enter a compressed (those that start with K or L) or uncompressed (those that start with 5) private keys as your passphrase, this means you can use the same wallet you have at your computer or any other wallet that allows exporting in this format. 
+ 
+**2.** When you access to your wallet, you can see your ILC balance and send your ILC by typing ILC address and amount.
